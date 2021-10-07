@@ -1,6 +1,8 @@
 <?= $this->extend('template'); ?>
 
 <?= $this->section('content'); ?>
+
+<body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -865,5 +867,6 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+</body>
 
 <?= $this->endsection(); ?>
