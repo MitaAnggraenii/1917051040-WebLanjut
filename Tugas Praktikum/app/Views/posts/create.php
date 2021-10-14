@@ -216,7 +216,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">My Posts</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -229,13 +229,52 @@
     </div>
     <!-- /.content-header -->
 
-    
-          <!-- right col -->
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                Form Tambah Posts
+            </div>
+            <div class="card-body">
+                 <form action="/admin/posts/store" method="POST">
+                    <div class="row">
+                        <div class="col-md-4">
+                     
+                            <div class="form-group">
+                                <label for="judul">Judul Postingan</label>
+                                <input type="text" class="form-control" id="judul" name="judul">
+                            </div>
+                            <div class="form-group">
+                                <label for="kategori">Judul Postingan</label>
+                                <input type="text" class="form-control" id="kategori" name="kategori">
+                            </div>
+                            <div class="form-group">
+                                <label for="slug">Slug</label>
+                                <input type="text" class="form-control" id="slug" name="slug">
+                            </div>
+                            <div class="form-group">
+                                <label for="kategori">Kategori Postingan</label>
+                                <input type="text" class="form-control" id="kategori" name="kategori">
+                            </div>
+                            <div class="form-group">
+                                <label for="author">Author</label>
+                                <input type="text" class="form-control" id="author" name="author">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i>Submit
+                            </button>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="deskripsi">Deskripsi Postingan</label>
+                            <br>
+                            <textarea name="deskripsi" id="deskripsi"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+    </div>
+    
+     
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -253,6 +292,14 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-</body>
 
-<?= $this->endsection(); ?>
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('mysript'); ?>
+<script>
+    $('#deskripsi').summernote()
+</script>
+<?= $this->endSection(); ?>
+
+
