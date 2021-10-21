@@ -18,7 +18,7 @@ class Templating extends BaseController
             'title' => "Blog - Posts"
         ];
 
-        return view('view_admin', $data);
+        return view('view_admin');
     }
 
     public function register()
