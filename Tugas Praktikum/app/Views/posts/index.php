@@ -47,8 +47,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="/admin" class="nav-link active ">
+          <li class="nav-item">
+            <a href="/admin" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -56,8 +56,8 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="/admin/posts" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="/admin/posts" class="nav-link active">
               <i class="nav-icon fas fa-book-open"></i>
               <p>
                 My Post
@@ -94,71 +94,63 @@
 
     <!-- /.content-header -->
 
-    <!-- /Main Content -->
-    <div class="container">
+    <!-- Main Content -->
+    <section class="content">
+    <?php echo (session()->getFlashdata('pesan')) ?>
+        
+      <div class="container-fluid">
         <a href="/admin/posts/create" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Data</a>
         <div class="card mt-3">
           <div class="card-header">
-            <b>Daftar Postingan</b>
+            Daftar Postingan
           </div>
           <div class="card-body">
-            <div class="table-responsive">
-              <div class="table table-striped text-center">
-
-              <table class="table">
+          <div class="table-responsive">
+            <table class="table table-striped text-center">
               <thead>
                 <tr>
-                  <th scope="col">No.</th>
-                  <th scope="col">Judul</th>
-                  <th scope="col">Slug</th>
-                  <th scope="col">Author</th>
-                  <th scope="col">Kategori</th>
-                  <th scope="col">Action</th>
+                  <th scope="col">No.</h>
+                  <th scope="col">Judul</h>
+                  <th scope="col">slug</h>
+                  <th scope="col">author</h>
+                  <th scope="col">kategori</h>
+                  <th scope="col">action</h>
                 </tr>
               </thead>
               <tbody>
                 <?php foreach ($posts as $i => $post) : ?>
                   <tr>
-                    <th scope="row"><?= $i + 1; ?></th>
-                    <td><?= $post['judul']; ?></td>
-                    <td><?= $post['slug']; ?></td>
-                    <td><?= $post['author']; ?></td>
-                    <td><?= $post['kategori']; ?></td>
-                    <td>
-                      <a href="/admin/posts/edit/<?= $post['slug']; ?>" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"></i>Edit</a>
-                      <a href="/admin/posts/delete/<?= $post['slug']; ?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i>Delete</a>
-                    </td>
-                  </tr>
+                  <th scope="row"><?= $i + 1; ?></th>
+                  <td><?= $post['judul'] ?></td>
+                  <td><?= $post['slug'] ?></td>
+                  <td><?= $post['author'] ?></td>
+                  <td><?= $post['kategori'] ?></td>
+                  <td>
+                      <a href="posts/edit/<?= $post['post_id']; ?>" class="btn btn-sm btn-warning me-1"><i class="fas fa-edit"></i> Edit</a>
+
+                      <form action="posts/<?= $post['post_id']; ?>" method="post" class="d-inline">
+                      <?= csrf_field(); ?>
+                      <input type="hidden" name="_method" value="delete">
+                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ?');"><i class="fas fa-trash"></i> Hapus</button>
+                      </form>
+                  </td>
+                </tr>
                 <?php endforeach; ?>
               </tbody>
             </table>
           </div>
-
-              </div>
-          </div>
-          
         </div>
-
+      </div>
     </div>
-    <!-- /.Main Content -->
-
-
-    
-          <!-- right col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
   <footer class="main-footer">
-    <div class="text-center">
-      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-      All rights reserved.
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0
     </div>
-
   </footer>
 
   <!-- Control Sidebar -->
@@ -169,4 +161,4 @@
 </div>
 <!-- ./wrapper -->
 
-<?= $this->endsection(); ?>
+<?= $this->endSection(); ?>
