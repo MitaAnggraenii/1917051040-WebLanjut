@@ -8,13 +8,9 @@ use App\Models\PostModel;
 class AdminPostsController extends BaseController
 {
 	public function __construct() {
- 
-        // Mendeklarasikan class BukuModel menggunakan $this->tokobuku
+        
         $this->posts = new PostModel();
-        /* Catatan:
-        Apa yang ada di dalam function construct ini nantinya bisa digunakan
-        pada function di dalam class Tokobuku
-        */
+    
     }
 	public function index()
 	{
@@ -78,10 +74,10 @@ class AdminPostsController extends BaseController
 
 		if ($valid){
 			$data = [
-				'judul' => $this->request->getVar('judul'),
-				'slug' => $this->request->getVar("slug"),
-				'kategori' => $this->request->getVar("kategori"),
-				'author' => $this->request->getVar("author"),
+				'judul' 	=> $this->request->getVar('judul'),
+				'slug' 		=> $this->request->getVar("slug"),
+				'kategori' 	=> $this->request->getVar("kategori"),
+				'author' 	=> $this->request->getVar("author"),
 				'deskripsi' => $this->request->getVar("deskripsi"),
 			];
 			# dd($data);
@@ -136,10 +132,10 @@ class AdminPostsController extends BaseController
 
 		if ($valid) {
 		$this->posts->save([
-			'post_id' => $post_id,
-			'judul' => $this->request->getVar('judul'),
-			'kategori' => $this->request->getVar("kategori"),
-			'author' => $this->request->getVar("author"),
+			'post_id'	=> $post_id,
+			'judul' 	=> $this->request->getVar('judul'),
+			'kategori' 	=> $this->request->getVar("kategori"),
+			'author' 	=> $this->request->getVar("author"),
 			'deskripsi' => $this->request->getVar("deskripsi")
 		]);
 
